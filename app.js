@@ -9,7 +9,7 @@ app.use('/cadastro', rotaCadastro )
 app.use(express.json())
 
 app.listen(PORT, ()=>{
-    console.log(`Escutando a PORTA ${PORT}` )
+    console.log(`Escutando  PORTA ${PORT}` )
 })
 
 
