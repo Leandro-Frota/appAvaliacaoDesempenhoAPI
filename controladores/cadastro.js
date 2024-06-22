@@ -1,8 +1,10 @@
+const { getCadastrados } = require("../servicos/cadastro")
 
 
 function getCadastro(req,res){
     try{
-        res.send("Veja os ja cadastrados realizado com sucesso")
+        const cadastrados = getCadastrados()    
+        res.send(cadastrados)
     }
     catch{
         res.status(500)
