@@ -1,4 +1,4 @@
-const { getCadastrados } = require("../servicos/cadastro")
+const { getCadastrados, insereNovoCadastro } = require("../servicos/cadastro")
 
 
 function getCadastro(req,res){
@@ -13,14 +13,21 @@ function getCadastro(req,res){
 }
 function postCadastro(req,res){
     try{
-        res.send("Cadastro realizado com sucesso")
+        const cadastroNovo = req.body
+        console.log(cadastroNovo)
+        if(cadastroNovo){
+        insereNovoCadastro(cadastroNovo)
+        res.status(200).send("Cadastro realizado com sucesso")
+        }else{
+            res.status(402).send("Dados de cadastro incompletos")
+        }
     }
     catch{
-        res.status(500)
-        res.send(error.message)
+        res.status(500).send(error.message)
     }
 }
 
 module.exports = {
-    getCadastro
+    getCadastro,
+    postCadastro
 }
